@@ -20,7 +20,7 @@ gulp.task('assets', function () {
 })
 
 gulp.task('scripts', function () {
-    browserify('./src/index.js')
+    browserify('./src/index.js') 
         .transform(babel)
         .bundle()
         .pipe(source('index.js'))
@@ -28,4 +28,4 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('public'));
 })
 
-gulp.task('default', ['styles', 'assets', 'scripts'])
+gulp.task('default', ['styles', 'assets', 'scripts']);
