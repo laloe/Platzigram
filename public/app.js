@@ -2569,17 +2569,34 @@ module.exports = [
 
 },{}],16:[function(require,module,exports){
 var page = require('page');
-var yo = require('yo-yo');
-var empty = require('empty-element');
-
-var main = document.getElementById('main-container');
 
 page('/', function (ctx, next) {
+    var main = document.getElementById('main-container');
     main.innerHTML = '<a href="/signup">Signup</a>';
 });
 
+},{"page":11}],17:[function(require,module,exports){
+var page = require('page');
+
+require('./homePage');
+require('./signup');
+
+page();
+
+},{"./homePage":16,"./signup":18,"page":11}],18:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+
 page('/signup', function (ctx, next) {
-    var el = yo`<div class="container">
+    var main = document.getElementById('main-container');
+    empty(main).appendChild(template);
+});
+
+},{"./template":19,"empty-element":3,"page":11}],19:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = yo`<div class="container">
                 <div class="row">
                     <div class="col s10 push-s1">
                         <div class="row">
@@ -2618,9 +2635,4 @@ page('/signup', function (ctx, next) {
                 </div>
             </div>`;
 
-    empty(main).appendChild(el);
-});
-
-page();
-
-},{"empty-element":3,"page":11,"yo-yo":14}]},{},[16]);
+},{"yo-yo":14}]},{},[17]);
