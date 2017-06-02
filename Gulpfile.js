@@ -30,16 +30,15 @@ function compile(watch) {
             .pipe(source('index.js'))
             .pipe(rename('app.js'))
             .pipe(gulp.dest('public'));
-
     }
 
     if (watch) {
         bundle.on('update', function () {
-            console.log('--> Bundling..');
+            console.log('--> Bundling...');
+            rebundle();
         })
     }
-
-    rebundle()
+    rebundle();
 }
 
 gulp.task('build', function () {
@@ -47,7 +46,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('watch', function (params) {
-    return compile(true); 
+    return compile(true);
 });
 
 
